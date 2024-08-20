@@ -46,7 +46,7 @@ namespace GameCaro
         {
             tmCoolDown.Stop();
             pnlChessBoard.Enabled = false;
-            undoToolStripMenuItem.Enabled = false;
+            //undoToolStripMenuItem.Enabled = false;
             //MessageBox.Show("Kết thúc");
         }
 
@@ -54,7 +54,7 @@ namespace GameCaro
         {
             prcbCoolDown.Value = 0;
             tmCoolDown.Stop();
-            undoToolStripMenuItem.Enabled = true;
+            //undoToolStripMenuItem.Enabled = true;
             ChessBoard.DrawChessBoard();
         }
 
@@ -77,7 +77,7 @@ namespace GameCaro
 
             socket.Send(new SocketData((int)SocketCommand.SEND_POINT, "", e.ClickedPoint));
 
-            undoToolStripMenuItem.Enabled = false;
+            //undoToolStripMenuItem.Enabled = false;
 
             Listen();
         }
@@ -99,23 +99,7 @@ namespace GameCaro
             }
         }
 
-        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            NewGame();
-            socket.Send(new SocketData((int)SocketCommand.NEW_GAME, "", new Point()));
-            pnlChessBoard.Enabled = true;
-        }
-
-        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Undo();
-            socket.Send(new SocketData((int)SocketCommand.UNDO, "", new Point()));
-        }
-
-        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Quit();
-        }
+        
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -201,7 +185,7 @@ namespace GameCaro
                         pnlChessBoard.Enabled = true;
                         tmCoolDown.Start();
                         ChessBoard.OtherPlayerMark(data.Point);
-                        undoToolStripMenuItem.Enabled = true;
+                        //undoToolStripMenuItem.Enabled = true;
                     }));
                     break;
                 case (int)SocketCommand.UNDO:
@@ -225,6 +209,28 @@ namespace GameCaro
             Listen();
         }
 
+
+
+
+
         #endregion
+
+        private void newbtn_Click(object sender, EventArgs e)
+        {
+            NewGame();
+            socket.Send(new SocketData((int)SocketCommand.NEW_GAME, "", new Point()));
+            pnlChessBoard.Enabled = true;
+        }
+
+        private void undobtn_Click(object sender, EventArgs e)
+        {
+            Undo();
+            socket.Send(new SocketData((int)SocketCommand.UNDO, "", new Point()));
+        }
+
+        private void quitbtn_Click(object sender, EventArgs e)
+        {
+            Quit();
+        }
     }
 }

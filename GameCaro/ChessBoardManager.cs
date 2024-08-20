@@ -104,8 +104,8 @@ namespace GameCaro
 
             this.Player = new List<Player>()
             {
-                new Player("Văn chơi caro", Image.FromFile(Application.StartupPath + "\\Resources\\x.png")),
-                new Player("Ai chơi caro với Văn cũng thua thôi", Image.FromFile(Application.StartupPath + "\\Resources\\o.png"))
+                new Player("Văn chơi caro", Image.FromFile(Application.StartupPath + "\\Resources\\x.jpg")),
+                new Player("Ai chơi caro với Văn cũng thua thôi", Image.FromFile(Application.StartupPath + "\\Resources\\o.jpg"))
             };
 
         }
