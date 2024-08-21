@@ -46,15 +46,12 @@ namespace GameCaro
         {
             tmCoolDown.Stop();
             pnlChessBoard.Enabled = false;
-            //undoToolStripMenuItem.Enabled = false;
-            //MessageBox.Show("Kết thúc");
         }
 
         void NewGame()
         {
             prcbCoolDown.Value = 0;
             tmCoolDown.Stop();
-            //undoToolStripMenuItem.Enabled = true;
             ChessBoard.DrawChessBoard();
         }
 
@@ -77,7 +74,6 @@ namespace GameCaro
 
             socket.Send(new SocketData((int)SocketCommand.SEND_POINT, "", e.ClickedPoint));
 
-            //undoToolStripMenuItem.Enabled = false;
 
             Listen();
         }
@@ -185,7 +181,6 @@ namespace GameCaro
                         pnlChessBoard.Enabled = true;
                         tmCoolDown.Start();
                         ChessBoard.OtherPlayerMark(data.Point);
-                        //undoToolStripMenuItem.Enabled = true;
                     }));
                     break;
                 case (int)SocketCommand.UNDO:
@@ -193,7 +188,7 @@ namespace GameCaro
                     prcbCoolDown.Value = 0;
                     break;
                 case (int)SocketCommand.END_GAME:
-                    MessageBox.Show("Đã 5 con trên 1 hàng");
+                    MessageBox.Show("Người chơi đã chiến thắng");
                     break;
                 case (int)SocketCommand.TIME_OUT:
                     MessageBox.Show("Hết giờ");
